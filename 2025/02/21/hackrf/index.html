@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang=en>
+  <!-- 如果 `config.language` 有值，则将其设置为 HTML 标签的 `lang` 属性 -->
+  <!-- 例如，`config.language` 为 "en-US" 时，结果为 `<html lang="en">` -->
+  <head>
+  <!-- 设置页面的字符编码为 UTF-8，确保支持多语言和特殊字符 -->
+  <meta charset="utf-8">
+
+  <!-- 指定 IE 浏览器使用最新的 Edge 渲染模式，提升兼容性 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- 指示页面对手持设备友好，建议设备采用默认模式渲染页面 -->
+  <meta name="HandheldFriendly" content="True">
+
+  <!-- 设置视口，用于响应式设计。 -->
+  <!-- width=device-width：将视口宽度设置为设备屏幕宽度 -->
+  <!-- initial-scale=1：初始缩放比例为 1 -->
+  <!-- maximum-scale=5：用户可以放大页面到 5 倍 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+
+  <!-- 动态生成 Open Graph（OG）元数据 -->
+  <!-- 用于优化页面在社交媒体分享时的显示效果 -->
+  <meta name="description" content="做无线感知要收取csi数据，之前用的学长改装的加了Intel 5300网卡的战损版老破电脑Thinkpad X201（应该是），开机多次随机成功+屏幕看不到，啥时候突然坏掉都不奇怪的程度。外加使用超麻烦，一收一发两台+一台控制主机三台电脑连到交换机上，收发外加三根天线，后来要两个收端，加了一个工控机。痛苦的搬运.jpg而且楠哥老早说了想用wifi6的网卡，俺和苏老师也觉得这系统太麻烦，上学期信誓旦">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hackrf+PicoScense构建收发csi数据的便携系统的可行性探究——记录一个啥问题也没解决的探索过程">
+<meta property="og:url" content="http://example.com/2025/02/21/hackrf/index.html">
+<meta property="og:site_name" content="YWJ">
+<meta property="og:description" content="做无线感知要收取csi数据，之前用的学长改装的加了Intel 5300网卡的战损版老破电脑Thinkpad X201（应该是），开机多次随机成功+屏幕看不到，啥时候突然坏掉都不奇怪的程度。外加使用超麻烦，一收一发两台+一台控制主机三台电脑连到交换机上，收发外加三根天线，后来要两个收端，加了一个工控机。痛苦的搬运.jpg而且楠哥老早说了想用wifi6的网卡，俺和苏老师也觉得这系统太麻烦，上学期信誓旦">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/image/rx_hackrf0_env_2412.png">
+<meta property="og:image" content="http://example.com/image/rx_hackrf0_tx_send_2412.png">
+<meta property="og:image" content="http://example.com/image/picoscense_no_virtual.png">
+<meta property="og:image" content="http://example.com/image/2400.png">
+<meta property="og:image" content="http://example.com/image/5800.png">
+<meta property="og:image" content="http://example.com/image/null.png">
+<meta property="og:image" content="http://example.com/image/rssi.png">
+<meta property="article:published_time" content="2025-02-21T12:33:07.000Z">
+<meta property="article:modified_time" content="2025-02-21T12:33:07.416Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/image/rx_hackrf0_env_2412.png">
+
+  <!-- 动态生成页面的其他元数据（例如标题、描述、关键词） -->
+  
+
+  <!-- 如果主题配置启用了 favicon 图标，则加载对应的图标资源 -->
+  
+    <!-- 桌面端 favicon 配置 -->
+    
+      
+        <!-- 使用指定路径的桌面端 favicon -->
+        <link rel="shortcut icon" href="/images/favicon.ico">
+      
+    
+
+    <!-- Android 设备 favicon 配置 -->
+    
+      
+        <!-- 使用指定路径的 Android favicon -->
+        <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+      
+    
+
+    <!-- Apple 设备 favicon 配置 -->
+    
+      
+        <!-- 使用指定路径的 Apple favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+      
+    
+  
+
+  <!-- 动态设置页面标题 -->
+  <title>hackrf+PicoScense构建收发csi数据的便携系统的可行性探究——记录一个啥问题也没解决的探索过程</title>
+
+  <!-- 引入异步脚本，例如 Google Analytics 和 Umami Analytics -->
+  <!-- 统计脚本 收集和分析网站的流量和用户行为数据 -->
+  <!-- Google Analytics -->
+
+
+  <!-- Umami Analytics -->
+
+
+
+  <!-- 加载主要的 CSS 样式文件 -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  <!-- 如果启用了从右到左（RTL）方向的布局，加载对应样式 -->
+  
+
+  <!-- 配置 RSS 订阅链接 -->
+  
+  
+
+  <!-- 如果主题启用了 MathJax，加载 MathJax 用于数学公式渲染 -->
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <!-- 引入 head 部分内容，通常包含网站的 meta 信息、标题和样式表链接 -->
+
+  <body class="max-width mx-auto px3 ltr">
+    <!-- 为 body 设置动态类名 -->
+    <!--
+      max-width: 限制页面最大宽度
+      mx-auto: 设置水平居中
+      px3: 添加水平内边距
+      theme.direction: 根据主题配置文件动态设置页面方向，例如 "ltr" 或 "rtl"
+    -->
+
+
+    <div class="content index py4 ">
+      <!-- 页面主体内容区域 -->
+      <!--
+        content: 页面内容的主要容器
+        index: 为主页内容添加额外样式
+        py4: 设置垂直内边距
+        h-card: 如果是首页，添加 `h-card` 类名（通常用于结构化数据标记）
+      -->
+
+      <header id="header">
+  <!-- 导航菜单 -->
+  <div id="nav">
+    <ul>
+      
+        <li class="nav-item">
+          <a href="/"
+             class="">
+            Home
+          </a>
+        </li>
+      
+        <li class="nav-item">
+          <a href="/archives/"
+             class="">
+            Writing
+          </a>
+        </li>
+      
+        <li class="nav-item">
+          <a href="/categories/"
+             class="">
+            categories
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</header>
+      
+      <div class="design-pic">
+    <h1>施工中</h1>
+</div>
+<style>
+    .design-pic {
+        width: 96vw;
+        height: 20vh;
+        background-color: #405b4a;
+        text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .design-pic h1 {
+        color: #fff;
+    }
+</style>
+      <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        hackrf+PicoScense构建收发csi数据的便携系统的可行性探究——记录一个啥问题也没解决的探索过程
+    </h1>
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        
+      </span>
+      
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>做无线感知要收取csi数据，之前用的学长改装的加了Intel 5300网卡的战损版老破电脑Thinkpad X201（应该是），开机多次随机成功+屏幕看不到，啥时候突然坏掉都不奇怪的程度。外加使用超麻烦，一收一发两台+一台控制主机三台电脑连到交换机上，收发外加三根天线，后来要两个收端，加了一个工控机。痛苦的搬运.jpg<br>而且楠哥老早说了想用wifi6的网卡，俺和苏老师也觉得这系统太麻烦，上学期信誓旦旦出差回来就给他改了，苏老师努力尝试了树莓派4，我努力问chatGPT，最后就是到现在还没搞出来，然而老师下命令了系统必须改，于是动手（果然没有压力就没动力）<br>废话结束（或许）</p>
+<h1 id="设计新系统"><a href="#设计新系统" class="headerlink" title="设计新系统"></a>设计新系统</h1><p>我们的需求是：</p>
+<ol>
+<li><strong>能够收发csi数据</strong></li>
+<li>能够使用wifi6网卡</li>
+<li>便携</li>
+<li>无线控制</li>
+</ol>
+<p>想了个方案：<br>树莓派5+扩展板+AX201网卡<br>收发csi数据这部分——在树莓派5上安装Ubuntu系统，使用feitcsi软件控制网卡收发数据，用树莓派新增的PCIE口连接扩展板，扩展板上有mini PCIE口可以插网卡，还有弄好的两根天线接口。<br>控制部分——用树莓派自带的网卡和控制的电脑连到一个局域网里ssh控制<br>如果成功的话就可以完美满足以上需求！靠想是想不到什么问题了，要动手一下，设备买了在路上</p>
+<h1 id="尝试hackrf-PicoScense收发"><a href="#尝试hackrf-PicoScense收发" class="headerlink" title="尝试hackrf+PicoScense收发"></a>尝试hackrf+PicoScense收发</h1><p>设备还没到的时间，楠哥说让试试可不可以用hackrf收发，软件用蒋老师的<a target="_blank" rel="noopener" href="https://ps.zpj.io/">PicoScense</a><br>刚开始觉得应该不难弄（naive 典），提前说最后结果是没弄成功</p>
+<p>安装的步骤不说了，去年暑假弄过了，很好安装</p>
+<p>因为弄这个系统就是希望可以便携一些，所以需要两台hackrf设备连接到同一台电脑上用PicoScense同时操控。注意Picoscense同时只能运行一个实例，所以操作多个设备要在一条指令里进行控制</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PicoScense <span class="string">&quot;-d debug; -i hackrf0 --mode logger --freq 2412 --plot; -i hackrf1 --mode injector --freq 2412 --repeat 10000&quot;</span></span><br></pre></td></tr></table></figure>
+<p>可以验证收端和发端是可以同时正常工作的，发端有发射信息的同时，收端在同步绘制接收到的信号</p>
+<h2 id="第一个问题-正确接收信号了吗？"><a href="#第一个问题-正确接收信号了吗？" class="headerlink" title="第一个问题 正确接收信号了吗？"></a>第一个问题 正确接收信号了吗？</h2><p>苏老师说期望工作在5.8GHz，测试2.4GHz（似乎）能正常工作，就直接把freq改成5800<br>结果！收端完全没反应<br>咋回事！<br>思考可能是设备收发有问题，但是发送一直有显示信号发送成功的消息，是不是真的发送了也不好验证，于是想先看看接收是不是正常的<br>只开启收端，发现能够正常接收环境中的2.4G频段的信号，那么接收应该没有问题<br>对比了一下开启发端和不开启发端的情况下接收信号的幅值，开启收端的情况下明显要大，那么应该是能够收到发端数据的（有彩蛋）<br><img src="/../image/rx_hackrf0_env_2412.png" alt="环境中的信号幅度"><br><img src="/../image/rx_hackrf0_tx_send_2412.png" alt="发端发射时接收到的信号幅度"></p>
+<h2 id="第二个问题-设备的问题还是软件的问题？"><a href="#第二个问题-设备的问题还是软件的问题？" class="headerlink" title="第二个问题 设备的问题还是软件的问题？"></a>第二个问题 设备的问题还是软件的问题？</h2><p>其实设备有问题的话我也不会修，只能换个天线试试，因为不知道天线支不支持双频段，量了长度搜，11cm正好卡在一个哪个频段的天线都有的长度o_o<br>换了以后还是一样收不到<br>然后就是怀疑软件有问题，因为PicoScense好像用的人不是很多，比较多的样例都是测试的usrp设备，那么在同一台电脑上操作两个sdr设备hackrf可能也会出现一些奇怪的问题？导致收不到&#x2F;发不了5G频段的数据<br>但是再搞多一台电脑来操控设备的话就和老系统一样麻烦了，那么用docker再挂载设备能行吗？答案是不行，试都不用，文档写了不支持虚拟环境&#x3D; &#x3D;（然而我折腾了一下午）<br><img src="/../image/picoscense_no_virtual.png" alt="文档写了不支持虚拟环境！"></p>
+<h2 id="第三个问题-能发的频率范围是多少？"><a href="#第三个问题-能发的频率范围是多少？" class="headerlink" title="第三个问题 能发的频率范围是多少？"></a>第三个问题 能发的频率范围是多少？</h2><p>2.4G可以，5G不行，那么3G可以吗？<br>不行。<br>那么是到哪里不行呢？<br>接下来神奇的事发生了，我从2400MHz开始尝试，2400-2420-2450-2470都可以正常接收，但是到2500MHz不行了<br>那么分界点应该在2470-2500之间吧<br>2480MHz，唔，不行<br>2475MHz，可以<br>2478MHz，可以<br>2479MHz，可以<br>那临界点是2479MHz了？<br>这个时候我又试了一下2480MHz<br>他行了！<br>正常了！<br>Why? Family who knows!<br>难道我可以通过这种方式一路到5G？<br>接下来这种情况反复发生，直到2590MHz的时候，怎么重复以上过程2591MHz都无法正常工作，于是收工回宿舍<br>第二天早上来到工位，试了一下2591MHz，接收正常<br>尝试5100MHz，5300MHz，依旧不行<br>破大防。</p>
+<h2 id="重复第二个问题"><a href="#重复第二个问题" class="headerlink" title="重复第二个问题"></a>重复第二个问题</h2><p>因为对硬件真的束手无策，所以还是从软件下手，换了一个网上查到使用比较多的软件GNU Radio<br>分别收取了：</p>
+<ol>
+<li>发端发送2400MHz</li>
+<li>发端发送5800MHz</li>
+<li>发端啥也不发<br>的信号数据并画图分析<br><img src="/../image/2400.png" alt="1"><br><img src="/../image/5800.png" alt="2"><br><img src="/../image/null.png" alt="3"><br>这又啥区别也没有</li>
+</ol>
+<h2 id="彩蛋一个"><a href="#彩蛋一个" class="headerlink" title="彩蛋一个"></a>彩蛋一个</h2><p>在判断第一个问题，信号是否有收发的时候，分析的是信号的幅度，后来楠哥说这样不对，应该比较的是RSSI信号强度<br>于是我又绘制了一下RSSI的信号图<br><img src="/../image/rssi.png" alt="rssi的空环境和发端发送的分析"><br>图里橙色的是发端不发送时收到的信号，蓝色是发端发送2412MHz频率的信号，RSSI值越接近0表明信号强度越强<br>所以意思是，发端发送信号时，收端收到的信号会更弱！</p>
+
+  </div>
+  <div class="footer">
+    
+  <div class="postdate">
+    
+      <!-- 如果 display_year 为 true，显示完整日期（包括年份）-->
+      <time datetime="2025-02-21T12:33:07.000Z" class="dt-published" itemprop="datePublished">
+        
+          02-21  <!-- 只显示月日 -->
+        
+      </time>
+      
+    
+  </div>
+
+
+  </div>
+</article>
+
+
+      <!-- 动态插入页面内容，例如文章内容或其他模板内容 -->
+
+    </div>
+    
+      <span id="actions">
+    <!-- 如果存在上一页，则显示“上一页”按钮，并显示标题 -->
+    
+    
+        <!-- 如果存在下一页，则显示“下一页”按钮，并显示标题 -->
+        
+        <li>
+          <a class="icon" aria-label="Next post" 
+             href="/2025/01/14/test%20copy%203/">
+            <!-- 显示下一页的标题 -->
+            <span class="page-title">test</span>
+            <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+          </a>
+        </li>
+    
+  </span>
+      <!-- 如果当前页面是文章页面，加载移动端的交互按钮部分 -->
+        
+    <div class="footer">
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- 加载额外的样式表 -->
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+    <!-- 加载额外的脚本 -->
+  </body>
+</html>
