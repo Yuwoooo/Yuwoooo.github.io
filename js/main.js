@@ -10,14 +10,6 @@ if (!!$.prototype.justifiedGallery) {
   $(".article-gallery").justifiedGallery(options);
 }
 
-hexo.extend.filter.register('after_post_render', function(data) {
-  var className = 'image-caption';
-  if (data.layout == 'post' || data.layout == 'page' || data.layout == 'about') {
-    data.content = data.content.replace(/(<img [^>]*alt="([^"]+)"[^>]*>)/g, '$1' + '<span style="text-align: center; display:block; color: grey;" class="' + className + '">$2</span>');
-  }
-  return data;
-});
-
 $(document).ready(function() {
 
   /**
