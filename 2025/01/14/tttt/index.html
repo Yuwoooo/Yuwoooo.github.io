@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang=en>
-  <!-- 如果 `config.language` 有值，则将其设置为 HTML 标签的 `lang` 属性 -->
-  <!-- 例如，`config.language` 为 "en-US" 时，结果为 `<html lang="en">` -->
-  <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="ttttttwretwertwretwertwretwertwretwertwretwertwretwertwretwertwretwertwretwert wretwertwretwertwretwert">
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>test | YWJ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ttttttwretwertwretwertwretwertwretwertwretwertwretwertwretwertwretwertwretwert wretwertwretwertwretwert">
 <meta property="og:type" content="article">
 <meta property="og:title" content="test">
 <meta property="og:url" content="http://example.com/2025/01/14/tttt/index.html">
@@ -20,434 +18,240 @@
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="tag-t">
 <meta name="twitter:card" content="summary">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>test</title>
-    <!-- async scripts -->
-    <!-- Google Analytics -->
-
-
-    <!-- Umami Analytics -->
-
-
-    <!-- styles -->
-    
+  
+    <link rel="alternate" href="/atom.xml" title="YWJ" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
+  
     
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
 <meta name="generator" content="Hexo 7.3.0"></head>
 
-  <!-- 引入 head 部分内容，通常包含网站的 meta 信息、标题和样式表链接 -->
-
-  <body class="max-width mx-auto px3 ltr">
-    <!-- 为 body 设置动态类名 -->
-    <!--
-      max-width: 限制页面最大宽度
-      mx-auto: 设置水平居中
-      px3: 添加水平内边距
-      theme.direction: 根据主题配置文件动态设置页面方向，例如 "ltr" 或 "rtl"
-    -->
-
-    <div class="design-pic">
-    <h1>Welcome to My Custom Header</h1>
-    <p>This is a custom header inserted via EJS.</p>
-</div>
-<style>
-    .design-pic {
-        width: 100vw;
-        background-color: #f5f5f5;
-        padding: 20px;
-        text-align: center;
-        border-bottom: 1px solid #ddd;
-    }
-</style>
-    <!-- 引入设计图片部分，通常是网站头部设计图片或背景 -->
-
-    
-      <div id="header-post">
-  <!-- 菜单图标，主要用于触发菜单的显示 -->
-  <a id="menu-icon" href="#" aria-label="Menu">
-    <!-- 图标：汉堡菜单，用 Font Awesome 图标表示 -->
-    <i class="fa-solid fa-bars fa-lg"></i>
-  </a>
-
-  <!-- 平板设备上的菜单图标，与上方类似 -->
-  <a id="menu-icon-tablet" href="#" aria-label="Menu">
-    <i class="fa-solid fa-bars fa-lg"></i>
-  </a>
-
-  <!-- 返回顶部图标，仅在需要时显示 -->
-  <a id="top-icon-tablet" href="#" aria-label="Top"
-     onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;">
-    <i class="fa-solid fa-chevron-up fa-lg"></i>
-  </a>
-
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!-- 遍历主题配置中的导航项 (theme.nav)，生成导航菜单 -->
-        
-        <!-- 导航项 -->
-        <li>
-          <a href="/">
-            <!-- 从多语言配置中获取导航名称 -->
-            Home
-          </a>
-        </li>
-        
-        <!-- 导航项 -->
-        <li>
-          <a href="/about/">
-            <!-- 从多语言配置中获取导航名称 -->
-            About
-          </a>
-        </li>
-        
-        <!-- 导航项 -->
-        <li>
-          <a href="/archives/">
-            <!-- 从多语言配置中获取导航名称 -->
-            Writing
-          </a>
-        </li>
-        
-        <!-- 导航项 -->
-        <li>
-          <a target="_blank" rel="noopener" href="http://github.com/probberechts">
-            <!-- 从多语言配置中获取导航名称 -->
-            Projects
-          </a>
-        </li>
-        
-      </ul>
-    </span>
-
-    <br/>
-
-    <span id="actions">
-      <ul>
-        <!-- 如果存在上一页，则显示“上一页”按钮 -->
-        
-        <li>
-          <a class="icon" aria-label="Previous post" 
-             href="/2025/01/14/tttt%20copy/">
-            <!-- 使用箭头图标表示上一页 -->
-            <i class="fa-solid fa-chevron-left" aria-hidden="true" 
-               onmouseover="$('#i-prev').toggle();" 
-               onmouseout="$('#i-prev').toggle();"></i>
-          </a>
-        </li>
-        
-
-        <!-- 如果存在下一页，则显示“下一页”按钮 -->
-        
-        <li>
-          <a class="icon" aria-label="Next post" 
-             href="/2025/01/14/tttt%20copy%205/">
-            <!-- 使用箭头图标表示下一页 -->
-            <i class="fa-solid fa-chevron-right" aria-hidden="true" 
-               onmouseover="$('#i-next').toggle();" 
-               onmouseout="$('#i-next').toggle();"></i>
-          </a>
-        </li>
-        
-
-        <!-- 返回顶部按钮 -->
-        <li>
-          <a class="icon" aria-label="Back to top" 
-             href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');">
-            <i class="fa-solid fa-chevron-up" aria-hidden="true" 
-               onmouseover="$('#i-top').toggle();" 
-               onmouseout="$('#i-top').toggle();"></i>
-          </a>
-        </li>
-
-        <!-- 分享按钮 -->
-        <li>
-          <a class="icon" aria-label="Share post" href="#">
-            <!-- 分享图标 -->
-            <i class="fa-solid fa-share-alt" aria-hidden="true" 
-               onmouseover="$('#i-share').toggle();" 
-               onmouseout="$('#i-share').toggle();" 
-               onclick="$('#share').toggle();return false;"></i>
-          </a>
-        </li>
-      </ul>
-
-      <!-- 悬浮显示的提示文本 -->
-      <span id="i-prev" class="info" style="display:none;">
-        Previous post
-      </span>
-      <span id="i-next" class="info" style="display:none;">
-        Next post
-      </span>
-      <span id="i-top" class="info" style="display:none;">
-        Back to top
-      </span>
-      <span id="i-share" class="info" style="display:none;">
-        Share post
-      </span>
-    </span>
-
-    <br/>
-
-    <!-- 分享菜单，默认隐藏 -->
-    <div id="share" style="display: none">
-      <!-- 引用分享组件的部分内容 -->
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/01/14/tttt/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/01/14/tttt/&text=test"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/01/14/tttt/&title=test"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/01/14/tttt/&is_video=false&description=test"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=test&body=Check out this article: http://example.com/2025/01/14/tttt/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/01/14/tttt/&title=test"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/01/14/tttt/&title=test"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/01/14/tttt/&title=test"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/01/14/tttt/&title=test"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/01/14/tttt/&name=test&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/01/14/tttt/&t=test"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
-
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">YWJ</a>
+      </h1>
+      
     </div>
-
-    <!-- 目录部分，只有内容中包含目录时才显示 -->
-    
-    
-      <div id="toc">
-        <!-- 动态生成目录 HTML -->
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tttt"><span class="toc-number">1.</span> <span class="toc-text">tttt</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#tt"><span class="toc-number">1.1.</span> <span class="toc-text">tt</span></a></li></ol></li></ol>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-tttt" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/14/tttt/" class="article-date">
+  <time class="dt-published" datetime="2025-01-14T03:11:53.000Z" itemprop="datePublished">2025-01-14</time>
+</a>
     
-  </span>
-</div>
-
-      <!-- 如果当前页面是文章页面，加载桌面端的交互按钮部分 -->
-    
-
-    <div class="content index py4 ">
-      <!-- 页面主体内容区域 -->
-      <!--
-        content: 页面内容的主要容器
-        index: 为主页内容添加额外样式
-        py4: 设置垂直内边距
-        h-card: 如果是首页，添加 `h-card` 类名（通常用于结构化数据标记）
-      -->
-
-      
-
-      <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle p-name" itemprop="name headline">
-        test
-    </h1>
-
-
-
-    <div class="meta">
-      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-name" itemprop="name">John Doe</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2025-01-14T03:11:53.000Z" class="dt-published" itemprop="datePublished">2025-01-14</time>
-        
-      
-    </div>
-
-
-      
-    <div class="article-category">
-        <i class="fa-solid fa-archive"></i>
-        <a class="category-link" href="/categories/%E8%BF%99%E6%98%AF%E4%B8%AD%E6%96%87%E7%9A%84/">这是中文的</a>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/tags/tag-t/" rel="tag">tag-t</a>
-    </div>
-
-
-    </div>
-  </header>
-  
-
-  <div class="content e-content" itemprop="articleBody">
-    <h1 id="tttt"><a href="#tttt" class="headerlink" title="tttt"></a>tttt</h1><h2 id="tt"><a href="#tt" class="headerlink" title="tt"></a>tt</h2><p>wretwert<br>wretwert<br>wretwert<br>wretwert<br>wretwert<br>wretwert<br>wretwert<br>wretwert<br>wretwert</p>
-<p>wretwert<br>wretwert<br>wretwert</p>
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%BF%99%E6%98%AF%E4%B8%AD%E6%96%87%E7%9A%84/">这是中文的</a>
+  </div>
 
   </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      test
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="tttt"><a href="#tttt" class="headerlink" title="tttt"></a>tttt</h1><h2 id="tt"><a href="#tt" class="headerlink" title="tt"></a>tt</h2><p>wretwert<br>wretwert<br>wretwert<br>wretwert<br>wretwert<br>wretwert<br>wretwert<br>wretwert<br>wretwert</p>
+<p>wretwert<br>wretwert<br>wretwert</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/14/tttt/" data-id="cm9m3pazw000yg8tsda20aka8" data-title="test" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tag-t/" rel="tag">tag-t</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/01/14/tttt%20copy/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          test
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/01/14/tttt%20copy%205/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">test</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/metasurface/">metasurface</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BF%99%E6%98%AF%E4%B8%AD%E6%96%87%E7%9A%84/">这是中文的</a></li></ul>
+    </div>
+  </div>
 
-      <!-- 动态插入页面内容，例如文章内容或其他模板内容 -->
 
-      
-        <div id="footer-post-container">
-  <div id="footer-post">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/tag-t/" rel="tag">tag-t</a></li></ul>
+    </div>
+  </div>
 
-    <div id="nav-footer" style="display: none">
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/tag-t/" style="font-size: 10px;">tag-t</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">February 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">January 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
       <ul>
         
-          <li><a href="/">Home</a></li>
+          <li>
+            <a href="/2025/02/21/hackrf/">hackrf+PicoScense构建收发csi数据的便携系统的可行性探究——记录一个啥问题也没解决的探索过程</a>
+          </li>
         
-          <li><a href="/about/">About</a></li>
+          <li>
+            <a href="/2025/01/14/test%20copy%202/">test</a>
+          </li>
         
-          <li><a href="/archives/">Writing</a></li>
+          <li>
+            <a href="/2025/01/14/test%20copy%203/">test</a>
+          </li>
         
-          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+          <li>
+            <a href="/2025/01/14/test%20copy/">test</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/14/test%20copy%204/">test</a>
+          </li>
         
       </ul>
     </div>
+  </div>
 
-    
-    
-      <div id="toc-footer" style="display: none">
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tttt"><span class="toc-number">1.</span> <span class="toc-text">tttt</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#tt"><span class="toc-number">1.1.</span> <span class="toc-text">tt</span></a></li></ol></li></ol>
+  
+</aside>
+        
       </div>
-    
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2025/01/14/tttt/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2025/01/14/tttt/&text=test"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2025/01/14/tttt/&title=test"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2025/01/14/tttt/&is_video=false&description=test"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=test&body=Check out this article: http://example.com/2025/01/14/tttt/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2025/01/14/tttt/&title=test"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2025/01/14/tttt/&title=test"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2025/01/14/tttt/&title=test"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2025/01/14/tttt/&title=test"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2025/01/14/tttt/&name=test&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2025/01/14/tttt/&t=test"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        
-          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
-    </div>
-
-  </div>
-</div>
-
-        <!-- 如果当前页面是文章页面，加载移动端的交互按钮部分 -->
-      
-
       <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2016-2025
-    John Doe
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/">Home</a></li><!--
-     --><!--
-       --><li><a href="/about/">About</a></li><!--
-     --><!--
-       --><li><a href="/archives/">Writing</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
-     -->
-      </ul>
-    </nav>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
   </div>
 </footer>
 
-      <!-- 加载网站的页脚部分 -->
     </div>
-
-    <!-- styles -->
-
-
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- 加载额外的样式表 -->
-
-    <!-- jquery -->
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
 
 
+<script src="/js/jquery-3.6.4.min.js"></script>
 
 
-<!-- clipboard -->
 
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
-  
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
-    btn += '<i class="fa-regular fa-clone"></i>';
-    btn += '</span>';
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "Copied!");
-      e.clearSelection();
-    })
-  })
-  </script>
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
-<script src="/js/main.js"></script>
 
-<!-- search -->
 
-<!-- Baidu Analytics -->
+<script src="/js/script.js"></script>
 
-<!-- Cloudflare Analytics -->
 
-<!-- Disqus Comments -->
 
-<!-- utterances Comments -->
 
-    <!-- 加载额外的脚本 -->
-  </body>
+
+  </div>
+</body>
 </html>
