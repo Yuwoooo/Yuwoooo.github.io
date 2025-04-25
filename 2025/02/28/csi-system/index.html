@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="接上文，买的设备陆陆续续都到了，开始为期一周的踩坑回顾一下方案  树莓派5+扩展板+AX201网卡收发csi数据这部分——在树莓派5上安装Ubuntu系统，使用feitcsi软件控制网卡收发数据，用树莓派新增的PCIE口连接扩展板，扩展板上有mini PCIE口可以插网卡，还有弄好的两根天线接口。控制部分——用树莓派自带的网卡和控制的电脑连到一个局域网里ssh控制  不详的预感软件用的FeitCS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派5+AX210收发CSI数据系统搭建">
+<meta property="og:url" content="https://yuwoooo.github.io/2025/02/28/csi-system/index.html">
+<meta property="og:site_name" content="YWJ">
+<meta property="og:description" content="接上文，买的设备陆陆续续都到了，开始为期一周的踩坑回顾一下方案  树莓派5+扩展板+AX201网卡收发csi数据这部分——在树莓派5上安装Ubuntu系统，使用feitcsi软件控制网卡收发数据，用树莓派新增的PCIE口连接扩展板，扩展板上有mini PCIE口可以插网卡，还有弄好的两根天线接口。控制部分——用树莓派自带的网卡和控制的电脑连到一个局域网里ssh控制  不详的预感软件用的FeitCS">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-02-28T07:15:30.969Z">
+<meta property="article:modified_time" content="2025-04-25T08:57:10.295Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>树莓派5+AX210收发CSI数据系统搭建</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/02/21/hackrf/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yuwoooo.github.io/2025/02/28/csi-system/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yuwoooo.github.io/2025/02/28/csi-system/&text=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yuwoooo.github.io/2025/02/28/csi-system/&title=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yuwoooo.github.io/2025/02/28/csi-system/&is_video=false&description=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=树莓派5+AX210收发CSI数据系统搭建&body=Check out this article: https://yuwoooo.github.io/2025/02/28/csi-system/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yuwoooo.github.io/2025/02/28/csi-system/&title=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yuwoooo.github.io/2025/02/28/csi-system/&title=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yuwoooo.github.io/2025/02/28/csi-system/&title=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yuwoooo.github.io/2025/02/28/csi-system/&title=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yuwoooo.github.io/2025/02/28/csi-system/&name=树莓派5+AX210收发CSI数据系统搭建&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yuwoooo.github.io/2025/02/28/csi-system/&t=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E8%AF%A6%E7%9A%84%E9%A2%84%E6%84%9F"><span class="toc-number">1.</span> <span class="toc-text">不详的预感</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E4%B8%8D%E8%A1%8C%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">驱动不行？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E4%B8%8D%E8%A1%8C%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">软件不行？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E8%A2%AB%E5%B9%B2%E4%BA%86-%E6%9C%8D%E4%BA%86"><span class="toc-number">4.</span> <span class="toc-text">驱动被干了 服了</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        树莓派5+AX210收发CSI数据系统搭建
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-02-28T07:15:30.969Z" class="dt-published" itemprop="datePublished">2025-02-28</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>接上文，买的设备陆陆续续都到了，开始为期一周的踩坑<br>回顾一下方案</p>
+<blockquote>
+<p>树莓派5+扩展板+AX201网卡<br>收发csi数据这部分——在树莓派5上安装Ubuntu系统，使用feitcsi软件控制网卡收发数据，用树莓派新增的PCIE口连接扩展板，扩展板上有mini PCIE口可以插网卡，还有弄好的两根天线接口。<br>控制部分——用树莓派自带的网卡和控制的电脑连到一个局域网里ssh控制</p>
+</blockquote>
+<h1 id="不详的预感"><a href="#不详的预感" class="headerlink" title="不详的预感"></a>不详的预感</h1><p>软件用的<a target="_blank" rel="noopener" href="https://feitcsi.kuskosoft.com/">FeitCSI</a>，兼容各个架构，不过网卡只能AX200，AX210。一开始网卡还没到的时候在尝试软件，运行不起来，后来发现是树莓派本身的网卡不能用&#x3D; &#x3D;<br>组装略过（但是请记得PCIE口有卡扣可以打开，别像我一样硬塞好吗好的），装好了开机网卡就能识别到了</p>
+<p>直接使用deb包安装后尝试运行FeitCSI失败，具体报错可以看我提的<a target="_blank" rel="noopener" href="https://github.com/KuskoSoft/FeitCSI/issues/10">issue</a><br>这就很迷了啊，开个软件把网卡搞掉了<br>但实际是软件接口不存在，物理接口还是好好的，就是<code>ifconfig</code>没有，但是<code>lspci</code>还是一切正常<br>对硬件一窍不通的本人只能转去看看软件相关的部分</p>
+<h1 id="驱动不行？"><a href="#驱动不行？" class="headerlink" title="驱动不行？"></a>驱动不行？</h1><p>当时在英特尔只找到了网卡的一些规格说明，就直接在linux更新了iwlwifi，这会在写博客的时候找到了官方的驱动下载，贴上来<br><a target="_blank" rel="noopener" href="https://www.intel.cn/content/www/cn/zh/support/articles/000005511/wireless.html">linux驱动</a><br><a target="_blank" rel="noopener" href="https://www.intel.cn/content/www/cn/zh/download/19351/intel-wireless-wi-fi-drivers-for-windows-10-and-windows-11.html">win驱动</a><br>不过其实不是驱动的问题&#x3D; &#x3D;</p>
+<h1 id="软件不行？"><a href="#软件不行？" class="headerlink" title="软件不行？"></a>软件不行？</h1><p>动手改源码！Wings表示是最深入的一次（（（</p>
+<p><code>MainController.cpp</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">MainController::initInterface</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;wifiController.<span class="built_in">init</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;wifiController.<span class="built_in">getInterfaces</span>();</span><br><span class="line">        <span class="keyword">this</span>-&gt;wifiController.<span class="built_in">getPhys</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// delete actual interfaces</span></span><br><span class="line">        <span class="keyword">for</span> (InterfaceInfo interface : <span class="keyword">this</span>-&gt;wifiController.interfaces)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (Arguments::arguments.verbose)</span><br><span class="line">            &#123;</span><br><span class="line">                Logger::<span class="built_in">log</span>(info) &lt;&lt; <span class="string">&quot;Remove interface &quot;</span> &lt;&lt; interface.ifName &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">this</span>-&gt;bkpInterfaces.<span class="built_in">push_back</span>(interface);</span><br><span class="line">            <span class="keyword">this</span>-&gt;wifiController.<span class="built_in">removeInterface</span>(<span class="literal">NULL</span>, interface.ifIndex);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>-&gt;wifiController.<span class="built_in">addMonitorDevice</span>(MONITOR_INTERFACE_NAME, NL80211_IFTYPE_MONITOR);</span><br><span class="line">        <span class="keyword">this</span>-&gt;wifiController.<span class="built_in">setInterfaceUpDown</span>(MONITOR_INTERFACE_NAME, <span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">this</span>-&gt;wifiController.<span class="built_in">setFreq</span>(Arguments::arguments.frequency, Arguments::arguments.bandwidth.<span class="built_in">c_str</span>());</span><br><span class="line">        <span class="keyword">if</span> (!MainController::mainWindow)</span><br><span class="line">        &#123;</span><br><span class="line">            std::this_thread::<span class="built_in">sleep_for</span>(std::chrono::<span class="built_in">milliseconds</span>(<span class="number">500</span>)); <span class="comment">//wait on init then set power and go next</span></span><br><span class="line">            <span class="keyword">this</span>-&gt;wifiController.<span class="built_in">setTxPower</span>();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">catch</span>(<span class="type">const</span> std::exception&amp; e)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (MainController::mainWindow)</span><br><span class="line">        &#123;</span><br><span class="line">            MainController::mainWindow-&gt;<span class="built_in">fatalError</span>(e.<span class="built_in">what</span>());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            Logger::<span class="built_in">log</span>(error) &lt;&lt; e.<span class="built_in">what</span>() &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">            <span class="keyword">delete</span> MainController::INSTANCE;</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>软件整体流程是，初始化，获取网络和物理接口，获取是没问题的<br>然后把获取的所有接口都关掉，这是第一个出错的地方<br><strong>removeInterface()关闭了需要无线连接使用的wlan0</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>-&gt;wifiController.<span class="built_in">removeInterface</span>(<span class="literal">NULL</span>, interface.ifIndex);</span><br></pre></td></tr></table></figure>
+<p>树莓派自己的wlan0是不能在普通用户状态下被关闭的（因为之前sudo的话会出现<code>No such device</code>），而且无线控制打算用这个wlan0来连接，所以加了个判断，wlan0就别关（对就是这么粗暴）</p>
+<p>（此时2025.4.25，过了两个月才继续写，接下来的可能有些记不太清楚了）</p>
+<p><strong>addMonitorDevice()失败</strong><br>因为要进行收集csi等操作，所以需要在wifi6网卡上创建一个新的虚拟网络接口操作（猜的，不知道为啥不能用原来那个接口）<br>但是在创建时，会报错<code>No such device</code>或该网卡没有不允许这个操作&#x2F;无权限（记不清了）的错误，取决于启动命令是否加了<code>sudo</code><br><code>WiFIController.cpp</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">WiFIController::addMonitorDevice</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *name, <span class="type">const</span> nl80211_iftype type)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>-&gt;phys.<span class="built_in">empty</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> std::ios_base::<span class="built_in">failure</span>(<span class="string">&quot;Error no phy devices\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="type">const</span> <span class="type">void</span> *settings[] = &#123;name, &amp;type&#125;;</span><br><span class="line"></span><br><span class="line">    Cmd cmd&#123;</span><br><span class="line">        .id = NL80211_CMD_NEW_INTERFACE,</span><br><span class="line">        .idby = CIB_PHY,</span><br><span class="line">        .nlFlags = <span class="number">0</span>,</span><br><span class="line">        .device = <span class="keyword">this</span>-&gt;phys[<span class="number">0</span>],</span><br><span class="line">        .handler = <span class="keyword">this</span>-&gt;processAddMonitorDeviceHandler,</span><br><span class="line">        .valid_handler = <span class="literal">NULL</span>,</span><br><span class="line">        .args = settings,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">this</span>-&gt;<span class="built_in">nlExecCommand</span>(cmd);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>继续查看这个函数并输出一些信息，会发现在<code>addMonitorDevice</code>里使用的网卡id和实际的网卡id是不对应的，可能因为软件理想情况是关闭全部接口再打开，这样能保证通过id找到正确的网卡，但是我前面没有让wlan0接口关闭，就导致了这个错误<br>很好那就强行指定一下id！（对，还是这么粗暴）</p>
+<p><strong>沟通协议消息填错了（吗）</strong><br>正确找到网卡以后，又报错了，并且还没离开这个函数<br><code>WiFIController.cpp</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">WiFIController::processAddMonitorDeviceHandler</span><span class="params">(<span class="keyword">struct</span> nl80211_state *state, <span class="keyword">struct</span> nl_msg *msg, <span class="type">void</span> *arg)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">void</span> **settings = (<span class="type">void</span> **)arg;</span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> *name = (<span class="type">const</span> <span class="type">char</span> *)settings[<span class="number">0</span>];</span><br><span class="line">    nl80211_iftype *type = (nl80211_iftype *)(settings[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NLA_PUT_STRING</span>(msg, NL80211_ATTR_IFNAME, name);</span><br><span class="line">    <span class="built_in">NLA_PUT_U32</span>(msg, NL80211_ATTR_IFTYPE, *type);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">nla_put_failure:</span><br><span class="line">    <span class="keyword">return</span> -ENOBUFS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里报错的是<code>NLA_PUT_U32</code>，从这里开始后面还出现了无法开启<code>csi</code>功能等一系列报错，我认为和传递的cmd消息有关，起码得看到cmd到底传递了什么，再进一步找具体的错误，但是这个协议库看具体消息特别麻烦，到最后用抓包尝试看了一下协议内容，但是还是有很多无法理解的字符和代码</p>
+<p><strong>网卡太旧没有csi功能</strong><br>是的不是所有WIFI6网卡都有csi功能，还得看批次，要003之后的才有（苏老师后来发现的）<br>当时买的新网卡没到拿的组里旧网卡正好是003批次的，怎么找都没有csi相关的接口😊😊😊<br>此时已经放弃捣鼓了，不知道如果网卡是新批次的话会不会中间就能成功少一点折磨</p>
+<h1 id="驱动被干了-服了"><a href="#驱动被干了-服了" class="headerlink" title="驱动被干了 服了"></a>驱动被干了 服了</h1><p>最后是 东西拿给苏老师他们弄，装一下就正常运行了<br>但是wlan0网卡接口消失了，重启也没有<br>发现是feitcsi的驱动会把其他驱动干掉，所以原来那个用wlan0网卡做无线控制的方案是行不通了<br>查了一下issue，去年有人也想到了这个方案（可恶我还以为我是第一个！可恶的定律应验了！），也碰到了相同的问题<br><a target="_blank" rel="noopener" href="https://github.com/KuskoSoft/FeitCSI-iwlwifi/issues/1">另一个的issue</a><br>他们最后也是无法解决，但是尝试在系统里创建一个虚拟机，插入一个新的usb网卡直通到虚拟机里，无线控制连接虚拟机里的网卡，再由虚拟机控制宿主机<br>看着好麻烦，不过这段时间尝试的差不多了，就差虚拟机里的网卡驱动装一下或者找个免驱网卡</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E8%AF%A6%E7%9A%84%E9%A2%84%E6%84%9F"><span class="toc-number">1.</span> <span class="toc-text">不详的预感</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E4%B8%8D%E8%A1%8C%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">驱动不行？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E4%B8%8D%E8%A1%8C%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">软件不行？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A9%B1%E5%8A%A8%E8%A2%AB%E5%B9%B2%E4%BA%86-%E6%9C%8D%E4%BA%86"><span class="toc-number">4.</span> <span class="toc-text">驱动被干了 服了</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yuwoooo.github.io/2025/02/28/csi-system/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yuwoooo.github.io/2025/02/28/csi-system/&text=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yuwoooo.github.io/2025/02/28/csi-system/&title=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yuwoooo.github.io/2025/02/28/csi-system/&is_video=false&description=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=树莓派5+AX210收发CSI数据系统搭建&body=Check out this article: https://yuwoooo.github.io/2025/02/28/csi-system/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yuwoooo.github.io/2025/02/28/csi-system/&title=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yuwoooo.github.io/2025/02/28/csi-system/&title=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yuwoooo.github.io/2025/02/28/csi-system/&title=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yuwoooo.github.io/2025/02/28/csi-system/&title=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yuwoooo.github.io/2025/02/28/csi-system/&name=树莓派5+AX210收发CSI数据系统搭建&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yuwoooo.github.io/2025/02/28/csi-system/&t=树莓派5+AX210收发CSI数据系统搭建"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
