@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="人麻了研一下都要结束了终于有自己的课题了……应该早点自己想一想找一找的😠 课题内容是wifi成像，要用超表面，没有必要用ai就不用（个人想法），用ai分类成像连成像依靠什么指标都不知道也是太被动了然而要是我做不出来我就换简单的用ai，管他呢发了就行（狗头保命） 上周东南出差所以出差前刚理清楚的公式都忘了，手写在纸上了但是看我的字有点费劲了哥们，还是得整理一下本次实验最大的收获是：实验一定要提前安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读论文wiffract">
+<meta property="og:url" content="https://yuwoooo.github.io/2025/04/17/wiffract/index.html">
+<meta property="og:site_name" content="YWJ">
+<meta property="og:description" content="人麻了研一下都要结束了终于有自己的课题了……应该早点自己想一想找一找的😠 课题内容是wifi成像，要用超表面，没有必要用ai就不用（个人想法），用ai分类成像连成像依靠什么指标都不知道也是太被动了然而要是我做不出来我就换简单的用ai，管他呢发了就行（狗头保命） 上周东南出差所以出差前刚理清楚的公式都忘了，手写在纸上了但是看我的字有点费劲了哥们，还是得整理一下本次实验最大的收获是：实验一定要提前安">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yuwoooo.github.io/image/wiffract-keller">
+<meta property="article:published_time" content="2025-04-17T06:39:16.615Z">
+<meta property="article:modified_time" content="2025-04-25T06:42:03.512Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="做课题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yuwoooo.github.io/image/wiffract-keller">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>读论文wiffract</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2025/02/28/csi-system/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yuwoooo.github.io/2025/04/17/wiffract/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yuwoooo.github.io/2025/04/17/wiffract/&text=读论文wiffract"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yuwoooo.github.io/2025/04/17/wiffract/&title=读论文wiffract"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yuwoooo.github.io/2025/04/17/wiffract/&is_video=false&description=读论文wiffract"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=读论文wiffract&body=Check out this article: https://yuwoooo.github.io/2025/04/17/wiffract/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yuwoooo.github.io/2025/04/17/wiffract/&title=读论文wiffract"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yuwoooo.github.io/2025/04/17/wiffract/&title=读论文wiffract"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yuwoooo.github.io/2025/04/17/wiffract/&title=读论文wiffract"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yuwoooo.github.io/2025/04/17/wiffract/&title=读论文wiffract"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yuwoooo.github.io/2025/04/17/wiffract/&name=读论文wiffract&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yuwoooo.github.io/2025/04/17/wiffract/&t=读论文wiffract"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8A%E5%91%A8%E4%B8%9C%E5%8D%97%E5%87%BA%E5%B7%AE"><span class="toc-number">1.</span> <span class="toc-text">上周东南出差</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E6%95%B4%E4%BD%93%E6%A2%B3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">论文整体梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.</span> <span class="toc-text">实验环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E6%8E%A8%E5%AF%BC"><span class="toc-number">2.2.</span> <span class="toc-text">模型推导</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E7%8E%87%E6%B5%8B%E9%87%8F"><span class="toc-number">2.2.1.</span> <span class="toc-text">功率测量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA"><span class="toc-number">2.3.</span> <span class="toc-text">图像重建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E8%B4%9D%E5%8F%B6%E6%96%AF%E8%A1%A5%E5%85%A8%E5%85%B6%E4%BB%96%E9%83%A8%E5%88%86"><span class="toc-number">2.4.</span> <span class="toc-text">用贝叶斯补全其他部分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BE%E9%A2%98%E6%A8%A1%E5%9E%8B%E6%8E%A8%E5%AF%BC"><span class="toc-number">4.</span> <span class="toc-text">课题模型推导</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E4%B8%80%EF%BC%9A-%E5%AD%98%E5%9C%A8%E8%A1%8D%E5%B0%84"><span class="toc-number">4.1.</span> <span class="toc-text">验证一： 存在衍射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E4%BA%8C%EF%BC%9A-%E8%A1%8D%E5%B0%84%E6%98%AF%E4%B8%AA%E9%94%A5%E4%BD%93"><span class="toc-number">4.2.</span> <span class="toc-text">验证二： 衍射是个锥体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E4%B8%89%EF%BC%9A-%E8%B6%85%E8%A1%A8%E9%9D%A2%E5%88%86%E5%8C%BA%E8%B0%83%E6%95%B4%E5%8F%AF%E8%A1%8C%EF%BC%8C%E5%BD%BC%E6%AD%A4%E5%BD%B1%E5%93%8D%E5%8F%AF%E9%81%BF%E5%85%8D"><span class="toc-number">4.3.</span> <span class="toc-text">验证三： 超表面分区调整可行，彼此影响可避免</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E5%9B%9B%EF%BC%9A-%E8%B6%85%E8%A1%A8%E9%9D%A2%E8%B0%83%E6%95%B4%E5%90%8E%E8%8E%B7%E5%8F%96%E8%A7%92%E5%BA%A6%E6%8E%A8%E7%AE%97%E5%8F%AF%E8%A1%8C"><span class="toc-number">4.4.</span> <span class="toc-text">验证四： 超表面调整后获取角度推算可行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E4%BA%94%EF%BC%9A-%E5%8A%A8%E6%80%81%E7%AE%97%E6%B3%95%E5%8F%AF%E8%A1%8C"><span class="toc-number">4.5.</span> <span class="toc-text">验证五： 动态算法可行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%9A%E8%83%8C%E6%99%AF%E9%99%A4%E6%B3%95"><span class="toc-number">4.6.</span> <span class="toc-text">做背景除法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E9%87%8F%E5%BE%97%E5%88%B0%E5%8A%9F%E7%8E%87"><span class="toc-number">4.7.</span> <span class="toc-text">测量得到功率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E5%9B%BE"><span class="toc-number">4.8.</span> <span class="toc-text">建图</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        读论文wiffract
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">John Doe</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-04-17T06:39:16.615Z" class="dt-published" itemprop="datePublished">2025-04-17</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/%E5%81%9A%E8%AF%BE%E9%A2%98/" rel="tag">做课题</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>人麻了研一下都要结束了终于有自己的课题了……应该早点自己想一想找一找的😠</p>
+<p>课题内容是wifi成像，要用超表面，没有必要用ai就不用（个人想法），用ai分类成像连成像依靠什么指标都不知道也是太被动了<br>然而要是我做不出来我就换简单的用ai，管他呢发了就行（狗头保命）</p>
+<h1 id="上周东南出差"><a href="#上周东南出差" class="headerlink" title="上周东南出差"></a>上周东南出差</h1><p>所以出差前刚理清楚的公式都忘了，手写在纸上了但是看我的字有点费劲了哥们，还是得整理一下<br>本次实验最大的收获是：实验一定要提前安排计划好……</p>
+<h1 id="论文整体梳理"><a href="#论文整体梳理" class="headerlink" title="论文整体梳理"></a>论文整体梳理</h1><p>文中最重要的理论是<strong>凯勒锥理论</strong>，根据这个理论一句话介绍论文内容就是：信号打到边缘会衍射出一个凯勒锥体，再由一个接收阵列接收，判断锥体截面形状和锥顶角，从而判断这个边缘点的位置和方向<br>判断使用的指标是去除环境的功率强度，对于位置的部分使用近似补全</p>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p>使用wifi5<br>三个发端，但不同时发送<br>一列接收端，但会移动成一个阵列<br>物体是铁制金属数字</p>
+<h2 id="模型推导"><a href="#模型推导" class="headerlink" title="模型推导"></a>模型推导</h2><p>定义：</p>
+<ol>
+<li>edge point：物体表面不连续的点</li>
+<li>edge：曲率半径 &lt; 波长的一半</li>
+</ol>
+<p>理论——Keller’s Geometrical Theory of Diffraction (GTD)<br><img src="/../image/wiffract-keller's%20cone.png" alt="凯勒锥示意图"></p>
+<blockquote>
+<p>[!TIP]<br>看见凯勒锥？———凯勒锥能够在可见光谱中看到（参考文献[29]）</p>
+</blockquote>
+<blockquote>
+<p>[!NOTE]<br><strong>符号定义</strong><br>$M$：非edge point 集合<br>$\varepsilon$：edge point集合<br>$\Theta&#x3D;M\cap\varepsilon$：object space<br>$p_0$：物体的位置<br>$\alpha$：从$p_0$到$p_r$的无线路径的振幅衰减</p>
+</blockquote>
+<p>$RX_{p_0}$：$p_0$处的物体所影响的收端的子集<br>$$RX_{p_0}&#x3D;{p_r\in RX|\alpha(p_0, p_r) \not&#x3D; 0} \subset RX$$</p>
+<p>那么，对于一个收端$p_r$来说，所能收到的所有物体的点的集合为<br>$$OB_{p_r}&#x3D;{p_0\in \Theta | \alpha(p_0, p_r)\not&#x3D; 0}\subset \Theta$$</p>
+<p>由于边缘的点才能产生凯勒锥，所以影响的接收端非常多，其他的点影响的收端少，所以<br>$$若\mu \in M, \xi \in \varepsilon，则RX_{\mu} \ll RX_{\xi}$$</p>
+<h3 id="功率测量"><a href="#功率测量" class="headerlink" title="功率测量"></a>功率测量</h3><p>先用background subtraction去除静态环境（没说）<br>$$\bar{P}(p_r)\approx 2R { \sum_{p_0 \in OB_{p_r}} \Lambda(p_0, p_t, p_r)g^*(p_t, p_r)g(p_0, p_r) }$$</p>
+<p>$R$：取实部</p>
+<p>$$g(p_i, p_j)&#x3D;e^{-j\frac{2\pi}{\lambda}|p_i-p_j|}$$<br>从点$i$到$j$的Green’s func，其中：$\lambda$是波长；$||p_i-p_j||$是向量$(p_i-p_j)$的模长（欧几里得距离）；$g^*$是$g$的共轭</p>
+<p>$$\Lambda(p_0, p_t, p_r)&#x3D;\alpha^*(p_t, p_r)\tilde{\alpha}(p_0, p_r)<br>\ \tilde{\alpha}(p_0, p_r)&#x3D;\alpha(p_t, p_0)g(p_t, p_r)\alpha(p_0, p_r)$$</p>
+<p>公式推导使用的知识：</p>
+<ol>
+<li>电磁散射中的经典弱散射理论</li>
+<li>功率是复信号的模长平方</li>
+</ol>
+<p>公式想说明：功率由目标点引起的微小扰动引起，而非背景路径</p>
+<h2 id="图像重建"><a href="#图像重建" class="headerlink" title="图像重建"></a>图像重建</h2><blockquote>
+<p>[!NOTE]<br><strong>符号定义</strong><br>$p_m$：edge位置<br>$I(p_m)$：重建的图像矩阵，每个值对应一个像素点</p>
+</blockquote>
+<p>$$\hat{k}(p_t, p_,. p_r)&#x3D;g(p_t, p_r)g^*(p_m, p_r) \mathbb I_{P_r}\in RX_{p_m}$$<br>$\mathbb I$：0-1函数，判断当前的edge能否被此收端接收到，如果可以，为1，否则为0</p>
+<p>$$I(p_m)&#x3D;|\sum_{p_r\in RX_{p_m}} \bar{p}(p_r)\hat{k}(p_t, p_m, p_r)|<br>\&#x3D;|I_1(p_m)+I_2(p_m)|$$<br>$I_1$为有效信号，$I_2$为干扰项</p>
+<blockquote>
+<p>[!NOTE]<br>使用能够接收到的RX而不是全部的RX<br>TX到物体的距离需要大于系统的分辨率</p>
+</blockquote>
+<p><strong>Q：如何寻找截面所对应的RX集合？</strong><br>对于每一个可能是edge point的点，从小的集合开始测试，如果确实是edge point，就继续找方向</p>
+<p><strong>Imgae构建过程</strong></p>
+<ol>
+<li>从$\varphi:[0, \pi)$中取一组离散角度</li>
+<li>对于每个点，假设一个角度$\varphi_i$为正确方向，对于所有的点，形成一个角度集合$H_{\phi_i}$</li>
+<li>那么，对于已知的发射端位置$p_t$、接收端位置$p_r$、点位置$p_m$、正确角度$\varphi_i$，可以使用以下计算RX是否属于能够接收到RX组<br> $$&lt;\frac{p_r-p_m}{|p_r-p_m|} + \frac{p_t-p_m}{|p_t-p_m|}, \hat{e}&gt; &#x3D; 0  点乘$$<br> $\hat{e}$，坐标轴单位向量</li>
+<li>在以上的假设情况下，可以得到一个Image，$I(p_m, H_{\varphi_i})$</li>
+</ol>
+<p>得到Image之后，可以用来和之前最好的一个图像进行比较<br>$$\bar{I}(p_m)&#x3D;\frac{I(p_m, H_{\varphi^<em>(p_m)})}{max I(p, H_{\varphi^</em>(p)})}$$<br>可以通过经验设立阈值，来得到一个最终的置信度较高的点集</p>
+<h2 id="用贝叶斯补全其他部分"><a href="#用贝叶斯补全其他部分" class="headerlink" title="用贝叶斯补全其他部分"></a>用贝叶斯补全其他部分</h2><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>读完感觉整体能懂，但是好多的细节都好难并且论文也没仔细讲的样子（（（（</p>
+<ol>
+<li>（查一下）曲率半径一般多少？波长一般多少？能够识别出锋利的或者柔和的边缘吗</li>
+<li>（理论）凯勒锥衍射的具体理论细节？</li>
+<li>（设备）如何看见凯勒锥</li>
+<li>（代码）去除静态背景的过程？</li>
+<li>（理论）图像重建如何分离出干扰项</li>
+<li>（理论）如何去除对点位置的依赖</li>
+<li>（理论）如何判断锥体方向</li>
+<li>（理论）实际应该有多个点产生的锥体叠加，怎么处理？</li>
+</ol>
+<h1 id="课题模型推导"><a href="#课题模型推导" class="headerlink" title="课题模型推导"></a>课题模型推导</h1><p>俺自己的课题咋做的一些想法</p>
+<h2 id="验证一：-存在衍射"><a href="#验证一：-存在衍射" class="headerlink" title="验证一： 存在衍射"></a>验证一： 存在衍射</h2><h2 id="验证二：-衍射是个锥体"><a href="#验证二：-衍射是个锥体" class="headerlink" title="验证二： 衍射是个锥体"></a>验证二： 衍射是个锥体</h2><h2 id="验证三：-超表面分区调整可行，彼此影响可避免"><a href="#验证三：-超表面分区调整可行，彼此影响可避免" class="headerlink" title="验证三： 超表面分区调整可行，彼此影响可避免"></a>验证三： 超表面分区调整可行，彼此影响可避免</h2><h2 id="验证四：-超表面调整后获取角度推算可行"><a href="#验证四：-超表面调整后获取角度推算可行" class="headerlink" title="验证四： 超表面调整后获取角度推算可行"></a>验证四： 超表面调整后获取角度推算可行</h2><h2 id="验证五：-动态算法可行"><a href="#验证五：-动态算法可行" class="headerlink" title="验证五： 动态算法可行"></a>验证五： 动态算法可行</h2><h2 id="做背景除法"><a href="#做背景除法" class="headerlink" title="做背景除法"></a>做背景除法</h2><p>其他论文</p>
+<h2 id="测量得到功率"><a href="#测量得到功率" class="headerlink" title="测量得到功率"></a>测量得到功率</h2><p>$$\bar{P}(p_r)\approx 2R { \sum_{p_o \in OB_{p_r}} \Lambda(p_o, p_t, p_r)g^<em>(p_t, p_r)g(p_o, p_r) }&#x3D;2R{\alpha(p_t, p_o)g(p_t, p_r)\alpha(p_o, p_r)\alpha^</em>(p_t,p_r)·g^<em>(p_t, p_r)g(p_o,p_r)}$$<br>详细推导：<br>$$P(p_r) &#x3D;|E(p_r)|^2 &#x3D;|E_{bg}+E_{obj}|^2 &#x3D;|E_{bg}|^2+|E_{obj}|^2+2·R{E^</em><em>{bg}E</em>{obj}}$$<br>这里对bg取共轭是基于习惯，因为把包含物体的这条当作主链路，取了实部以后其实都一样<br>其中$E_{bg}$是背景信号，不携带目标信息，用背景除法消掉；$E_{obj}$太小，忽略掉，剩下：<br>$$P(p_r)&#x3D;2·R{E^*_{bg}E_{obj}}$$</p>
+<p>对于能量有<br>$$E&#x3D;幅度衰减<em>相位延迟&#x3D;\alpha·g$$<br>所以<br>$$E_{bg}&#x3D;\alpha(p_t, p_r)·g(p_t,p_r), \space E_{obj}&#x3D;\alpha(p_t, p_o)·\alpha(p_o, p_r)·g(p_t,p_o)·g(p_o, p_r)$$<br>所以<br>$$P(p_r)&#x3D;2R{\alpha^</em>(p_t, p_r)·g^*(p_t,p_r)\space · \alpha(p_t, p_o)·\alpha(p_o, p_r)·g(p_t,p_o)·g(p_o, p_r)}$$</p>
+<h2 id="建图"><a href="#建图" class="headerlink" title="建图"></a>建图</h2><p>（假设）对每个点，假设一组$\phi$为他们此时此刻产生的锥体的正确角度<br>对于每个点的每个$\phi$，计算能够收到信号的RX收端有哪个区域<br>考虑分辨率和收端方向，调整区域波束赋形</p>
+<ol>
+<li>如何确定调整哪些分区？</li>
+<li>调整多少角度？<br>前提：不知道入射角，指定出射方向，分辨率可调，可以观察RSS指标<br>应该是只能动态算法，看具体哪一种适合</li>
+</ol>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8A%E5%91%A8%E4%B8%9C%E5%8D%97%E5%87%BA%E5%B7%AE"><span class="toc-number">1.</span> <span class="toc-text">上周东南出差</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BA%E6%96%87%E6%95%B4%E4%BD%93%E6%A2%B3%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">论文整体梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">2.1.</span> <span class="toc-text">实验环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E6%8E%A8%E5%AF%BC"><span class="toc-number">2.2.</span> <span class="toc-text">模型推导</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E7%8E%87%E6%B5%8B%E9%87%8F"><span class="toc-number">2.2.1.</span> <span class="toc-text">功率测量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E5%83%8F%E9%87%8D%E5%BB%BA"><span class="toc-number">2.3.</span> <span class="toc-text">图像重建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E8%B4%9D%E5%8F%B6%E6%96%AF%E8%A1%A5%E5%85%A8%E5%85%B6%E4%BB%96%E9%83%A8%E5%88%86"><span class="toc-number">2.4.</span> <span class="toc-text">用贝叶斯补全其他部分</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BE%E9%A2%98%E6%A8%A1%E5%9E%8B%E6%8E%A8%E5%AF%BC"><span class="toc-number">4.</span> <span class="toc-text">课题模型推导</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E4%B8%80%EF%BC%9A-%E5%AD%98%E5%9C%A8%E8%A1%8D%E5%B0%84"><span class="toc-number">4.1.</span> <span class="toc-text">验证一： 存在衍射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E4%BA%8C%EF%BC%9A-%E8%A1%8D%E5%B0%84%E6%98%AF%E4%B8%AA%E9%94%A5%E4%BD%93"><span class="toc-number">4.2.</span> <span class="toc-text">验证二： 衍射是个锥体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E4%B8%89%EF%BC%9A-%E8%B6%85%E8%A1%A8%E9%9D%A2%E5%88%86%E5%8C%BA%E8%B0%83%E6%95%B4%E5%8F%AF%E8%A1%8C%EF%BC%8C%E5%BD%BC%E6%AD%A4%E5%BD%B1%E5%93%8D%E5%8F%AF%E9%81%BF%E5%85%8D"><span class="toc-number">4.3.</span> <span class="toc-text">验证三： 超表面分区调整可行，彼此影响可避免</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E5%9B%9B%EF%BC%9A-%E8%B6%85%E8%A1%A8%E9%9D%A2%E8%B0%83%E6%95%B4%E5%90%8E%E8%8E%B7%E5%8F%96%E8%A7%92%E5%BA%A6%E6%8E%A8%E7%AE%97%E5%8F%AF%E8%A1%8C"><span class="toc-number">4.4.</span> <span class="toc-text">验证四： 超表面调整后获取角度推算可行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E4%BA%94%EF%BC%9A-%E5%8A%A8%E6%80%81%E7%AE%97%E6%B3%95%E5%8F%AF%E8%A1%8C"><span class="toc-number">4.5.</span> <span class="toc-text">验证五： 动态算法可行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%9A%E8%83%8C%E6%99%AF%E9%99%A4%E6%B3%95"><span class="toc-number">4.6.</span> <span class="toc-text">做背景除法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E9%87%8F%E5%BE%97%E5%88%B0%E5%8A%9F%E7%8E%87"><span class="toc-number">4.7.</span> <span class="toc-text">测量得到功率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%BA%E5%9B%BE"><span class="toc-number">4.8.</span> <span class="toc-text">建图</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yuwoooo.github.io/2025/04/17/wiffract/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yuwoooo.github.io/2025/04/17/wiffract/&text=读论文wiffract"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yuwoooo.github.io/2025/04/17/wiffract/&title=读论文wiffract"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yuwoooo.github.io/2025/04/17/wiffract/&is_video=false&description=读论文wiffract"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=读论文wiffract&body=Check out this article: https://yuwoooo.github.io/2025/04/17/wiffract/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yuwoooo.github.io/2025/04/17/wiffract/&title=读论文wiffract"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yuwoooo.github.io/2025/04/17/wiffract/&title=读论文wiffract"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yuwoooo.github.io/2025/04/17/wiffract/&title=读论文wiffract"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yuwoooo.github.io/2025/04/17/wiffract/&title=读论文wiffract"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yuwoooo.github.io/2025/04/17/wiffract/&name=读论文wiffract&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yuwoooo.github.io/2025/04/17/wiffract/&t=读论文wiffract"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
